@@ -31,7 +31,7 @@ export async function build(env = process.env) {
       `<meta property="og:image" content="${origin}/assets/social.jpg">`,
       '<meta property="og:image:width" content="1200">',
       '<meta property="og:image:height" content="630">',
-      '<meta property="og:image:alt" content="Illustrative contemporary architecture for Fazal and Sons Construction Development">',
+      '<meta property="og:image:alt" content="Contemporary architecture and construction by Fazal and Sons Construction Development">',
       `<meta name="twitter:image" content="${origin}/assets/social.jpg">`
     ].join('\n  ');
     html = html.replace('</head>', `  ${metadata}\n</head>`);
@@ -39,7 +39,7 @@ export async function build(env = process.env) {
   await writeFile(path.join(target, 'index.html'), html);
   await writeFile(path.join(target, 'robots.txt'), `User-agent: *\nAllow: /\n${indexing ? `Sitemap: ${origin}/sitemap.xml\n` : ''}`);
   await writeFile(path.join(target, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${indexing ? `<url><loc>${origin}/</loc></url>` : ''}</urlset>\n`);
-  console.log(`Built static site in build/. Search indexing: ${indexing ? 'enabled' : 'disabled while sample content is in use'}.`);
+  console.log(`Built static site in build/. Search indexing: ${indexing ? 'enabled' : 'disabled'}.`);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

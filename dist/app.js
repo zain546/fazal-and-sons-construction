@@ -82,12 +82,12 @@ document.querySelectorAll('[data-filter]').forEach(button => button.addEventList
     if (!card.hidden) { count++; card.classList.add('visible'); }
   });
   $('.project-grid').classList.toggle('filtered', button.dataset.filter !== 'all');
-  $('#project-status').textContent = `Showing ${count} ${count === 1 ? 'sample project' : 'sample projects'}.`;
+  $('#project-status').textContent = `Showing ${count} ${count === 1 ? 'project' : 'projects'}.`;
 }));
 const projects = [
-  { title: 'The Courtyard Residence', image: 'assets/residence.webp', service: 'New construction', description: 'An exploration of open living, natural light, and contemporary exterior materials. A starting point for a conversation about your own residential project.' },
-  { title: 'A Space to Call Home', image: 'assets/interior.webp', service: 'Project consultation', description: 'Warm neutral tones, natural textures, and room to live well. This sample shows one possible visual direction for a thoughtfully considered interior.' },
-  { title: 'Room for Better Work', image: 'assets/commercial.webp', service: 'Project consultation', description: 'Light-filled spaces with flexibility at their heart. A commercial inspiration for businesses thinking about their next space.' }
+  { title: 'The Courtyard Residence', image: 'assets/residence.webp', service: 'New construction', description: 'An exploration of open living, natural light, and contemporary exterior materials designed for comfortable residential living.' },
+  { title: 'A Space to Call Home', image: 'assets/interior.webp', service: 'Project consultation', description: 'Warm neutral tones, natural textures, and room to live well, crafted with thoughtful attention to interior details.' },
+  { title: 'Room for Better Work', image: 'assets/commercial.webp', service: 'Project consultation', description: 'Light-filled spaces with flexibility at their heart, engineered for modern collaborative and commercial workspaces.' }
 ];
 const dialog = $('#project-dialog');
 let projectTrigger;
@@ -100,7 +100,7 @@ document.querySelectorAll('[data-project]').forEach(link => link.addEventListene
   projectTrigger = link;
   $('#dialog-title').textContent = selectedProject.title;
   $('#dialog-image').src = selectedProject.image;
-  $('#dialog-image').alt = `Sample inspiration: ${selectedProject.title}`;
+  $('#dialog-image').alt = `${selectedProject.title} - Fazal & Sons Construction`;
   $('#dialog-description').textContent = selectedProject.description;
   dialog.showModal();
   document.body.classList.add('dialog-open');
@@ -109,7 +109,7 @@ $('.dialog-close').addEventListener('click', () => dialog.close());
 $('#dialog-enquire').addEventListener('click', () => {
   $('#enquiry-details').open = true;
   $('#project-type').value = selectedProject.service;
-  $('#project-message').value = `I'd like to discuss a project inspired by ${selectedProject.title}.`;
+  $('#project-message').value = `I'd like to discuss a project similar to ${selectedProject.title}.`;
   clearBrief();
   dialog.close();
   requestAnimationFrame(() => $('#project-name').focus({ preventScroll: true }));
