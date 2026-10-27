@@ -107,6 +107,7 @@ document.querySelectorAll('[data-project]').forEach(link => link.addEventListene
 }));
 $('.dialog-close').addEventListener('click', () => dialog.close());
 $('#dialog-enquire').addEventListener('click', () => {
+  $('#enquiry-details').open = true;
   $('#project-type').value = selectedProject.service;
   $('#project-message').value = `I'd like to discuss a project inspired by ${selectedProject.title}.`;
   clearBrief();
@@ -136,6 +137,7 @@ form.addEventListener('input', event => {
 });
 form.addEventListener('change', clearBrief);
 document.querySelectorAll('[data-service]').forEach(link => link.addEventListener('click', () => {
+  $('#enquiry-details').open = true;
   $('#project-type').value = link.dataset.service;
   clearBrief();
 }));

@@ -39,6 +39,88 @@ body { line-height: 1.5; }
 .google-score small { font-size: 12px; color: #626e5c; }
 .review-quote figcaption strong { font-size: 14px; }
 .review-quote figcaption small { font-size: 11px; color: #626e5c; line-height: 1.6; }
+.testimonials-heading { display: flex; justify-content: space-between; align-items: center; gap: 60px; margin-bottom: 42px; }
+.testimonials-heading > div:first-child { max-width: 650px; }
+.testimonials-heading h2 { max-width: 650px; line-height: 1.12; }
+.testimonials-heading h2 em { display: block; }
+.testimonials-rating { flex-shrink: 0; padding-left: 38px; border-left: 1px solid #d4d9cb; min-width: 255px; }
+.rating-source { display: block; color: #626e5c; font-size: 10px; letter-spacing: 1.5px; font-weight: 600; }
+.rating-score { display: flex; align-items: center; gap: 17px; margin-block: 10px 8px; }
+.rating-score > strong { font-size: 39px; font-weight: 550; letter-spacing: -1.8px; line-height: 1.2; }
+.rating-score .stars { display: block; font-size: 12px; letter-spacing: 2px; }
+.rating-count { display: block; margin-top: 5px; font-size: 11px; color: #626e5c; }
+.testimonials-rating .text-link { min-height: 40px; font-size: 12px; padding-block: 8px; gap: 14px; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; align-items: stretch; }
+.testimonial-card { display: flex; flex-direction: column; min-width: 0; padding: 28px; background: #fafaf4; border: 1px solid #daddd0; border-radius: 4px; box-shadow: 0 4px 18px #25342b03; }
+.testimonial-google { border-top: 2px solid #ad805d; padding-top: 27px; }
+.testimonial-top { display: flex; justify-content: space-between; align-items: center; min-height: 31px; margin-bottom: 20px; }
+.testimonial-source { display: inline-flex; align-items: center; min-height: 26px; padding: 4px 9px; border-radius: 3px; font-size: 10px; font-weight: 550; letter-spacing: .3px; color: #53624d; background: #eaf0e3; }
+.testimonial-sample { background: #efeee5; color: #6f6b57; }
+.testimonial-quotation { font: 54px/.65 Georgia, serif; color: #c2c9b8; align-self: center; transform: translateY(8px); }
+.testimonial-card > .stars { font-size: 12px; letter-spacing: 2px; margin-bottom: 18px; }
+.testimonial-card blockquote { margin: 0 0 32px; font-family: 'Segoe UI', system-ui, Arial, sans-serif; font-size: 16px; line-height: 1.85; letter-spacing: -.12px; color: #374233; }
+.testimonial-card figcaption { display: flex; align-items: center; gap: 12px; margin-top: auto; padding-top: 20px; border-top: 1px solid #e0e3d7; }
+.testimonial-avatar { flex-shrink: 0; display: grid; place-items: center; height: 40px; width: 40px; border: 1px solid #d9dece; border-radius: 50%; background: #edf0e5; font-size: 11px; font-weight: 550; color: #5d6a53; }
+.testimonial-card figcaption strong { display: block; font-size: 13px; font-weight: 600; line-height: 1.5; }
+.testimonial-card figcaption small { display: block; font-size: 10px; line-height: 1.7; color: #68735f; margin-top: 3px; }
+.testimonials-note { margin-top: 22px; font-size: 11px; line-height: 1.8; color: #66725e; max-width: 850px; }
+/* Compact reviewer-first cards, without promotional source badges. */
+#reviews .testimonials-grid { gap: 24px; }
+#reviews .testimonial-card {
+  padding: 30px;
+  min-height: 310px;
+  border: 1px solid #dfe3d7;
+  border-radius: 12px;
+  background: #fffef9;
+  box-shadow: 0 8px 28px rgba(37, 52, 43, .035);
+}
+#reviews .testimonial-card figcaption { margin: 0 0 24px; padding: 0; border: 0; gap: 13px; }
+#reviews .testimonial-avatar { width: 44px; height: 44px; border: 0; background: #e8eddf; color: #43583c; font-size: 12px; }
+#reviews .testimonial-card:nth-child(2) .testimonial-avatar { background: #f1e8dc; color: #806344; }
+#reviews .testimonial-card:nth-child(3) .testimonial-avatar { background: #e4ebed; color: #4b6870; }
+#reviews .testimonial-card figcaption strong { font-size: 14px; letter-spacing: -.1px; }
+#reviews .testimonial-card figcaption small { font-size: 11px; color: #6a7562; }
+#reviews .testimonial-card > .stars { font-size: 13px; letter-spacing: 3px; margin-bottom: 18px; }
+#reviews .testimonial-card blockquote { margin: 0; font-size: 16px; line-height: 1.85; color: #3e493a; }
+#reviews .testimonials-rating { padding: 22px 26px; min-width: 265px; border: 1px solid #dce1d3; border-radius: 12px; background: #f7f8f0; }
+#reviews .testimonials-note { color: #6c7664; font-size: 11px; }
+@media (max-width: 1100px) { #reviews .testimonial-card { padding: 26px; } }
+@media (max-width: 960px) { #reviews .testimonial-card { min-height: 0; } }
+@media (max-width: 680px) {
+  #reviews .testimonials-rating { padding: 20px 22px; margin-top: 26px; }
+  #reviews .testimonial-card { padding: 26px 24px; }
+}
+@media (max-width: 1100px) { .testimonial-card { padding: 24px; } .testimonial-google { padding-top: 23px; } .testimonials-grid { gap: 16px; } .testimonial-card blockquote { font-size: 15px; } }
+@media (max-width: 960px) {
+  .testimonials-heading { gap: 32px; }
+  .testimonials-heading h2 { font-size: 44px; }
+  .testimonials-rating { min-width: 230px; padding-left: 26px; }
+  .testimonials-grid { grid-template-columns: 1fr; gap: 18px; }
+  .testimonial-card { padding: 28px; }
+  .testimonial-google { padding-top: 27px; }
+  .testimonial-top { margin-bottom: 15px; }
+  .testimonial-card blockquote { font-size: 17px; line-height: 1.75; margin-bottom: 26px; }
+}
+@media (max-width: 680px) {
+  .testimonials-heading { display: block; margin-bottom: 30px; }
+  .testimonials-heading h2 { font-size: 39px; }
+  .testimonials-rating { margin-top: 26px; padding: 22px 0 0; border-left: 0; border-top: 1px solid #d4d9cb; }
+  .testimonial-card { padding: 26px 24px; }
+  .testimonial-google { padding-top: 25px; }
+  .testimonial-card blockquote { font-size: 16px; }
+  .testimonials-note { font-size: 11px; margin-top: 20px; }
+}
+.sample-review-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 48px; }
+.sample-review { display: flex; flex-direction: column; padding: 32px; }
+.sample-review-label { align-self: flex-start; padding: 5px 9px; border: 1px solid #d7d8ca; color: #66705e; font-size: 10px; font-weight: 550; letter-spacing: 1px; margin-bottom: 20px; }
+.sample-review blockquote { font-size: 23px; line-height: 1.55; margin-bottom: 28px; }
+.sample-review figcaption { margin-top: auto; }
+.sample-reviews-note { grid-column: 1 / -1; margin-top: -8px; font-size: 11px; line-height: 1.7; color: #626e5c; }
+@media (max-width: 680px) {
+  .sample-review-grid { grid-template-columns: 1fr; gap: 22px; margin-top: 30px; }
+  .sample-review { padding: 26px 24px; }
+  .sample-review blockquote { font-size: 22px; }
+}
 .verified { font-size: 11px; color: #626e5c; }
 .contact-location { font-size: 12px; color: #c0cbb7; }
 .enquiry-heading > span { font-size: 10px; color: #616d58; }
@@ -217,3 +299,25 @@ html { scrollbar-gutter: stable; }
 @media (min-width: 681px) and (max-height: 800px) {
   .hero-content { padding-top: 50px; }
 }
+/* Direct contact remains available without the optional enquiry builder. */
+.contact .enquiry-panel { border: 1px solid #e1e5d7; border-radius: 14px; padding: 36px; box-shadow: 0 18px 48px #1020181c; }
+.contact .enquiry-heading { margin-bottom: 26px; padding-bottom: 0; border: 0; }
+.contact .enquiry-heading > span { margin: 0 0 14px; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: #7b684c; }
+.contact .enquiry-heading h3 { font-size: 27px; line-height: 1.3; letter-spacing: -.8px; }
+.enquiry-heading > p { max-width: 420px; margin-top: 13px; font-size: 14px; line-height: 1.8; color: #64715c; }
+.contact-quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.contact-action { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 17px 12px; min-height: 58px; border: 1px solid transparent; border-radius: 6px; font-size: 13px; font-weight: 600; line-height: 1.5; transition: background .2s ease, box-shadow .2s ease; }
+.contact-action svg { width: 19px; height: 19px; stroke-width: 1.7; }
+.contact-action-call { color: #fff; background: #293b2f; }
+.contact-action-call:hover { background: #3a4d3e; box-shadow: 0 4px 12px #25342b14; }
+.contact-action-whatsapp { background: #087c4c; color: #fff; }
+.contact-action-whatsapp:hover { background: #06663e; box-shadow: 0 4px 12px #087c4c18; }
+.contact-action .whatsapp-logo { width: 21px; height: 21px; stroke: none; fill: currentColor; }
+.contact-panel-meta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; padding-top: 16px; color: #68735f; font-size: 11px; line-height: 1.7; }
+.enquiry-details { margin-top: 27px; border-top: 1px solid #dce1d1; }
+.enquiry-details > summary { display: flex; justify-content: space-between; align-items: center; gap: 14px; cursor: pointer; list-style: none; min-height: 58px; font-size: 12px; font-weight: 550; color: #43533c; }
+.enquiry-details > summary::-webkit-details-marker { display: none; }
+.enquiry-details > summary svg { height: 15px; width: 15px; transition: transform .2s ease; }
+.enquiry-details[open] > summary svg { transform: rotate(180deg); }
+.enquiry-details > form { padding-top: 10px; }
+@media (max-width: 680px) { .contact .enquiry-panel { padding: 28px 24px; } .contact .enquiry-heading h3 { font-size: 24px; } .contact-quick-actions { grid-template-columns: 1fr; gap: 10px; } .contact-action { font-size: 14px; } }
