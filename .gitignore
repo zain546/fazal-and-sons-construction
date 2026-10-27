@@ -2,3 +2,7 @@ outputs/
 preview-desktop.png
 preview-mobile.png
 node_modules/
+build/
+.vercel/
+.env
+.env.*

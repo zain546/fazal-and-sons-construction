@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+
+const origin = 'http://127.0.0.1:4173';
+const page = await fetch(origin);
+assert.equal(page.status, 200);
+assert.equal(page.headers.get('x-content-type-options'), 'nosniff');
+assert.equal(page.headers.get('x-frame-options'), 'DENY');
+assert.match(page.headers.get('content-security-policy'), /script-src 'self'/);
+assert.match(await page.text(), /id="project-name"/);
+const module = await fetch(`${origin}/enquiry.mjs`);
+assert.equal(module.status, 200);
+assert.match(module.headers.get('content-type'), /javascript/);
+const missing = await fetch(`${origin}/missing-page`);
+assert.equal(missing.status, 404);
+assert.match(await missing.text(), /This space is/);
+const method = await fetch(origin, { method: 'POST' });
+assert.equal(method.status, 405);
+const traversal = await fetch(`${origin}/%2e%2e%5cREADME.md`);
+assert.equal(traversal.status, 403);
+console.log('Local HTTP checks passed: page, headers, module MIME, 404, method handling, and traversal rejection.');

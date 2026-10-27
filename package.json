@@ -1,0 +1,12 @@
+{
+  "name": "fazal-and-sons-construction",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node preview.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/production.test.mjs tests/build.test.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

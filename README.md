@@ -8,7 +8,7 @@ A responsive, one-page construction website for Fazal & Sons in Karachi, built w
 - Services, filterable sample projects, project detail dialogs, and site photography
 - Why choose us, Google review, contact information, and footer
 - Mobile navigation and click-to-call links
-- A local enquiry builder that prepares a copyable project brief; it does not send or store enquiries
+- An enquiry builder with validation, copy fallback, and a link to continue in WhatsApp; visitors choose when to send
 
 ## Preview locally
 
@@ -28,17 +28,28 @@ Import this repository into Vercel and use these settings:
 | --- | --- |
 | Framework Preset | Other |
 | Root Directory | Repository root |
-| Build Command | Empty (override the default) |
-| Output Directory | `dist` |
+| Build Command | `node scripts/build.mjs` (configured in `vercel.json`) |
+| Output Directory | `build` (configured in `vercel.json`) |
 
-No dependencies or build step are required. Add a custom domain in the Vercel project's domain settings and follow its DNS instructions.
+No third-party runtime dependencies are required. The small Node build step copies static files and generates deployment-specific SEO metadata. Add your custom domain in Vercel's domain settings. See `PRODUCTION.md` for launch settings and content that still needs confirmation.
 
 ## Updating content
 
 - `dist/index.html`: content, branding, services, contact information, and project cards
 - `dist/style.css`: layout, colours, responsive styles, and animations
 - `dist/app.js`: navigation, portfolio filtering, project dialogs, and enquiry builder
+- `dist/enquiry.mjs`: validated enquiry text and WhatsApp destination
+- `dist/production.css`: readability, touch targets, and accessibility refinements
 - `dist/assets/`: images and favicon
 - `ASSETS.md`: image sources and content provenance
 
 The portfolio names and architecture images are illustrative samples. Replace them with verified project information before using them as a completed-work portfolio. The current logo and service copy are provisional.
+
+## Validate
+
+```sh
+node --test tests/production.test.mjs tests/build.test.mjs
+node scripts/build.mjs
+```
+
+Search indexing stays disabled until launch is explicitly enabled with `ALLOW_INDEXING=true` and a production URL is available. Preview deployments remain noindex.
