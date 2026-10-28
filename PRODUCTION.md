@@ -24,6 +24,17 @@ The owner authorized sample content for this first version. The following remain
 
 The form validates required fields and prepares the enquiry locally. Continuing on WhatsApp passes the prepared text to WhatsApp only when the visitor follows that link. The visitor still chooses whether to send it. No enquiry is automatically submitted, stored in a database, or persisted in local storage. Call and copy alternatives remain available.
 
+## Google Ads and analytics configuration
+
+The Google tag (`gtag.js`) is pre-installed in `<head>` in `dist/index.html`. When ready to run Google Ads campaigns:
+
+1. In `dist/index.html`, replace `AW-XXXXXXXXX` with your friend's actual Google Ads Conversion ID (e.g. `AW-11500000000`).
+2. Event hooks in `dist/app.js` will automatically record conversions for:
+   - `contact_whatsapp_chat`: When visitors click to chat on WhatsApp.
+   - `contact_phone_call`: When visitors click any phone call link.
+   - `generate_lead`: When visitors prepare a project brief via the form.
+3. If changing the inline script, update the corresponding `sha256-...` hash in `vercel.json` if strict CSP script hashing is retained.
+
 ## Checks completed during implementation
 
 See `outputs/production-review.md` for the current local verification results. The automated checks cover whitespace validation, service validation, Unicode and punctuation in the outgoing message, input bounds, deployment indexing rules, and the structured-data CSP hash.

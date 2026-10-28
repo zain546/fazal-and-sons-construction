@@ -157,11 +157,13 @@ form.addEventListener('submit', event => {
   $('#copy-status').textContent = '';
   $('#result-title').focus({ preventScroll: true });
   $('#enquiry-result').scrollIntoView({ behavior: motion.matches ? 'instant' : 'smooth', block: 'nearest' });
+  trackEvent('generate_lead', { event_category: 'enquiry', event_label: enquiry.type });
 });
 $('#copy-brief').addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText($('#brief').value);
     $('#copy-status').textContent = 'Copied. You can now paste the brief into a message.';
+    trackEvent('copy_brief', { event_category: 'enquiry' });
   } catch {
     $('#brief').focus(); $('#brief').select();
     $('#copy-status').textContent = 'Copy is unavailable in this browser. The brief is selected; use your device’s Copy command.';
@@ -169,3 +171,94 @@ $('#copy-brief').addEventListener('click', async () => {
 });
 $('#year').textContent = new Date().getFullYear();
 document.querySelectorAll('[data-enhanced]').forEach(element => { element.hidden = false; });
+
+// Google Ads & Analytics conversion tracking helper
+function trackEvent(name, params = {}) {
+  try {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params);
+    if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: name, ...params });
+  } catch {}
+}
+
+document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+  link.addEventListener('click', () => {
+    trackEvent('contact_phone_call', { event_category: 'engagement', event_label: link.getAttribute('href') });
+  });
+});
+
+document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+  link.addEventListener('click', () => {
+    trackEvent('contact_whatsapp_chat', { event_category: 'engagement', event_label: link.getAttribute('id') || 'whatsapp_cta' });
+  });
+});
+
+// Smooth Minimalistic FAQ Accordion Animation
+document.querySelectorAll('.faq-item').forEach(details => {
+  const summary = details.querySelector('summary');
+  const content = details.querySelector('.faq-answer');
+  if (!summary || !content) return;
+
+  let animation = null;
+  let isClosing = false;
+  let isExpanding = false;
+
+  summary.addEventListener('click', event => {
+    event.preventDefault();
+    if (motion.matches) {
+      details.open = !details.open;
+      return;
+    }
+    details.style.overflow = 'hidden';
+    if (isClosing || !details.open) {
+      openItem();
+    } else if (isExpanding || details.open) {
+      shrinkItem();
+    }
+  });
+
+  function shrinkItem() {
+    isClosing = true;
+    const startHeight = `${details.offsetHeight}px`;
+    const endHeight = `${summary.offsetHeight}px`;
+
+    if (animation) animation.cancel();
+    animation = details.animate(
+      { height: [startHeight, endHeight] },
+      { duration: 280, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+    );
+
+    animation.onfinish = () => {
+      details.open = false;
+      finishAnimation();
+    };
+    animation.oncancel = () => { isClosing = false; };
+  }
+
+  function openItem() {
+    details.style.height = `${details.offsetHeight}px`;
+    details.open = true;
+    requestAnimationFrame(() => {
+      isExpanding = true;
+      const startHeight = `${details.offsetHeight}px`;
+      const endHeight = `${summary.offsetHeight + content.offsetHeight}px`;
+
+      if (animation) animation.cancel();
+      animation = details.animate(
+        { height: [startHeight, endHeight] },
+        { duration: 320, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' }
+      );
+
+      animation.onfinish = () => finishAnimation();
+      animation.oncancel = () => { isExpanding = false; };
+    });
+  }
+
+  function finishAnimation() {
+    animation = null;
+    isClosing = false;
+    isExpanding = false;
+    details.style.height = '';
+    details.style.overflow = '';
+  }
+});
+
