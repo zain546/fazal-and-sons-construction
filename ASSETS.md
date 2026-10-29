@@ -1,7 +1,6 @@
 # Site assets and content
 
-- `dist/assets/hero.webp`: generated architectural concept using the built-in ImageGen tool. Illustrative; not a completed Fazal & Sons project.
-- Generation prompt: photorealistic editorial view of a contemporary two-storey Karachi courtyard residence, ivory limestone, warm concrete and bronze screens, palm trees, warm dusk light, building to the right with shaded space on the left for typography. No text, logos, or people.
+- `dist/assets/hero.webp`, `dist/assets/hero-960.webp`: active building construction site photography showing multi-storey concrete framework, block masonry, and concrete pump pouring (from `design/hero-options/option-1-concrete-blocks.png`). Optimized to WebP.
 - `residence.jpg`, `interior.jpg`, `commercial.jpg`: sample architecture imagery from Unsplash. Their original URLs are below. Project names are illustrative and labelled on the page and in details.
 - `reinforcement.jpg`, `site.jpg`, `concrete.jpg`: collected from the owner's Google Maps business photo gallery. The first two are used in the real site journal. Concrete photo retained as an alternate.
 - Business name, address, phone, review text, and 5.0 rating from one review were verified on the Google profile on 26 October 2026.

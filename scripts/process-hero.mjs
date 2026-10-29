@@ -1,0 +1,30 @@
+import sharp from 'sharp';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const input = path.join(root, 'design', 'hero-options', 'option-1-concrete-blocks.png');
+const outputHero = path.join(root, 'dist', 'assets', 'hero.webp');
+const outputHero960 = path.join(root, 'dist', 'assets', 'hero-960.webp');
+const outputSocial = path.join(root, 'dist', 'assets', 'social.jpg');
+
+// Generate 1672px webp (original 1672x941)
+await sharp(input)
+  .resize(1672, 941, { fit: 'cover', position: 'center' })
+  .webp({ quality: 85, effort: 6 })
+  .toFile(outputHero);
+console.log('Generated:', outputHero);
+
+// Generate 960px webp
+await sharp(input)
+  .resize(960, 540, { fit: 'cover', position: 'center' })
+  .webp({ quality: 82, effort: 6 })
+  .toFile(outputHero960);
+console.log('Generated:', outputHero960);
+
+// Generate 1200x630 social share image
+await sharp(input)
+  .resize(1200, 630, { fit: 'cover', position: 'center' })
+  .jpeg({ quality: 86, progressive: true })
+  .toFile(outputSocial);
+console.log('Generated:', outputSocial);

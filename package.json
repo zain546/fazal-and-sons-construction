@@ -8,5 +8,10 @@
     "build": "node scripts/build.mjs",
     "test": "node --test tests/production.test.mjs tests/build.test.mjs"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "sharp": "^0.35.5"
+  }
 }
