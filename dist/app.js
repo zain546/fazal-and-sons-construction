@@ -63,7 +63,7 @@ if ('IntersectionObserver' in window && !motion.matches) {
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
     if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
   }), { threshold: 0.05 });
-  document.querySelectorAll('.reveal').forEach(element => {
+  document.querySelectorAll('.reveal:not(.project-card)').forEach(element => {
     if (element.getBoundingClientRect().bottom > 0) { element.classList.add('will-reveal'); observer.observe(element); }
   });
   motion.addEventListener('change', event => {
@@ -132,7 +132,8 @@ document.querySelectorAll('[data-project]').forEach(link => link.addEventListene
   if (!selectedProject) return;
   projectTrigger = link;
   $('#dialog-title').textContent = selectedProject.title;
-  $('#dialog-image').src = selectedProject.image;
+  $('#dialog-image-webp').srcset = selectedProject.image;
+  $('#dialog-image').src = selectedProject.image.replace(/\.webp$/, '.jpg');
   $('#dialog-image').alt = `${selectedProject.title} - Fazal & Sons Construction`;
   $('#dialog-description').textContent = selectedProject.description;
   dialog.showModal();

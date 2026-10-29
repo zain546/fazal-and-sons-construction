@@ -425,3 +425,8 @@ html { scrollbar-gutter: stable; }
 .policy-footer .wrap { display:flex; justify-content:space-between; gap:20px; font-size:13px; line-height:1.7; }
 .privacy-page a:focus-visible { outline:2px solid #ad744e; outline-offset:5px; }
 @media(max-width:680px) { .policy-header { padding-block:22px; } .policy-brand { font-size:19px; } .policy-header .text-link { font-size:12px; } .policy-main { padding-block:44px 60px; } .policy-footer .wrap { flex-direction:column; } }
+
+/* Keep real project photos visible even if scroll animation is interrupted. */
+#projects .project-image picture, #project-dialog > picture { display: block; }
+#projects .project-card { opacity: 1; transform: none; }
+#projects .project-image img { min-height: 1px; }
