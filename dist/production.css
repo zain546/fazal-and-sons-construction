@@ -406,3 +406,22 @@ html { scrollbar-gutter: stable; }
 #project-dialog #dialog-image { max-height: 66vh; object-fit: contain; background: #ebece6; }
 @media (max-width: 1000px) { #projects .project-grid, #projects .project-grid.filtered { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 680px) { #projects .project-grid, #projects .project-grid.filtered { grid-template-columns: 1fr; gap: 30px; } #projects .project-image img { aspect-ratio: 4 / 5; } }
+/* Privacy page follows the site's restrained ivory, copper, and forest palette. */
+.policy-header { display:flex; justify-content:space-between; align-items:center; gap:24px; padding-block:30px; border-bottom:1px solid #26302a1a; }
+.policy-brand { font-size:24px; font-weight:700; letter-spacing:.02em; }
+.policy-brand em { color:#ac714b; font-family:Georgia,serif; }
+.policy-brand small { display:block; margin-top:8px; font-size:8px; font-weight:400; letter-spacing:.2em; }
+.policy-main { max-width:1000px; padding-block:72px 90px; }
+.policy-heading { padding-bottom:40px; border-bottom:1px solid #26302a1a; }
+.policy-heading h1 { font-size:clamp(44px,7vw,78px); margin:22px 0; }
+.policy-heading h1 em { font-family:Georgia,serif; font-weight:400; }
+.policy-heading p:last-child { max-width:680px; font-size:18px; line-height:1.8; }
+.policy-date { font-size:13px; color:#616b63; margin-bottom:24px; }
+.policy-content section { margin-top:36px; }
+.policy-content h2 { font-size:24px; letter-spacing:-.025em; line-height:1.3; margin-bottom:14px; }
+.policy-content p, .policy-content address { font-size:16px; line-height:1.85; color:#48534b; margin-top:12px; font-style:normal; }
+.policy-content a { text-decoration:underline; text-underline-offset:4px; }
+.policy-footer { padding:28px 0; }
+.policy-footer .wrap { display:flex; justify-content:space-between; gap:20px; font-size:13px; line-height:1.7; }
+.privacy-page a:focus-visible { outline:2px solid #ad744e; outline-offset:5px; }
+@media(max-width:680px) { .policy-header { padding-block:22px; } .policy-brand { font-size:19px; } .policy-header .text-link { font-size:12px; } .policy-main { padding-block:44px 60px; } .policy-footer .wrap { flex-direction:column; } }
