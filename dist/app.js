@@ -85,9 +85,42 @@ document.querySelectorAll('[data-filter]').forEach(button => button.addEventList
   $('#project-status').textContent = `Showing ${count} ${count === 1 ? 'project' : 'projects'}.`;
 }));
 const projects = [
-  { title: 'The Courtyard Residence', image: 'assets/residence.webp', service: 'New construction', description: 'An exploration of open living, natural light, and contemporary exterior materials designed for comfortable residential living.' },
-  { title: 'A Space to Call Home', image: 'assets/interior.webp', service: 'Project consultation', description: 'Warm neutral tones, natural textures, and room to live well, crafted with thoughtful attention to interior details.' },
-  { title: 'Room for Better Work', image: 'assets/commercial.webp', service: 'Project consultation', description: 'Light-filled spaces with flexibility at their heart, engineered for modern collaborative and commercial workspaces.' }
+  {
+    "title": "Residential Building Exterior",
+    "image": "assets/projects/work-1.webp",
+    "service": "New construction",
+    "description": "A multi-storey residential building photographed from street level."
+  },
+  {
+    "title": "Street-facing Facade",
+    "image": "assets/projects/work-2.webp",
+    "service": "New construction",
+    "description": "A street-level view of facade detailing and the building entrance."
+  },
+  {
+    "title": "Multi-storey Development",
+    "image": "assets/projects/work-3.webp",
+    "service": "New construction",
+    "description": "An exterior view showing the scale and facade of a multi-storey development."
+  },
+  {
+    "title": "Concrete Structure in Progress",
+    "image": "assets/projects/work-4.webp",
+    "service": "New construction",
+    "description": "Reinforced concrete construction with formwork and floor slabs taking shape on site."
+  },
+  {
+    "title": "Foundation & Column Work",
+    "image": "assets/projects/work-5.webp",
+    "service": "New construction",
+    "description": "An on-site view of foundation bases, column reinforcement, and early structural work."
+  },
+  {
+    "title": "Staircase Construction",
+    "image": "assets/projects/work-6.webp",
+    "service": "New construction",
+    "description": "A closer look at staircase formwork and structural construction on site."
+  }
 ];
 const dialog = $('#project-dialog');
 let projectTrigger;

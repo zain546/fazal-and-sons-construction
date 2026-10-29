@@ -395,3 +395,14 @@ html { scrollbar-gutter: stable; }
   .faq-item > summary { padding: 18px 20px; font-size: 15px; }
   .faq-answer { padding: 0 20px 20px; font-size: 14px; }
 }
+
+/* Real project photography: consistent framing across mixed image formats. */
+#projects .project-grid, #projects .project-grid.filtered { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 24px; }
+#projects .project-image { border-radius: 8px; }
+#projects .project-image img, #projects .project-grid.filtered .project-image img { height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center; }
+#projects .project-info { align-items: flex-start; gap: 12px; }
+#projects .project-info h3 { font-size: clamp(18px, 1.5vw, 22px); line-height: 1.35; }
+#projects .project-info p { font-size: 12px; line-height: 1.6; }
+#project-dialog #dialog-image { max-height: 66vh; object-fit: contain; background: #ebece6; }
+@media (max-width: 1000px) { #projects .project-grid, #projects .project-grid.filtered { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 680px) { #projects .project-grid, #projects .project-grid.filtered { grid-template-columns: 1fr; gap: 30px; } #projects .project-image img { aspect-ratio: 4 / 5; } }
