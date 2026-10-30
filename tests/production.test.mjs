@@ -57,3 +57,23 @@ test('page has valid local resources, anchor targets, unique IDs, and service op
   assert.ok(html.includes('id="main" tabindex="-1"'));
   assert.ok(html.includes('<noscript>'));
 });
+
+
+test('Google Maps links use universal URLs with a precise business destination', async () => {
+  const html = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
+  const links = [...html.matchAll(/<a\b[^>]*href="(https:\/\/www\.google\.com\/maps\/[^"]*)"[^>]*>/g)];
+  assert.equal(links.length, 3);
+  for (const [tag, href] of links) {
+    const url = new URL(href.replaceAll('&amp;', '&'));
+    assert.equal(url.searchParams.get('api'), '1');
+    assert.doesNotMatch(tag, /target="_blank"/, 'Allow direct app handoff without opening a new tab');
+    if (url.pathname === '/maps/search/') {
+      assert.ok(url.searchParams.get('query').includes('Fazal'));
+      assert.equal(url.searchParams.get('query_place_id'), 'ChIJFf7C98E_sz4RNLds1g-D4PM');
+    } else {
+      assert.equal(url.pathname, '/maps/dir/');
+      assert.equal(url.searchParams.get('destination'), '24.9081024,67.0285533');
+      assert.equal(url.searchParams.get('destination_place_id'), 'ChIJFf7C98E_sz4RNLds1g-D4PM');
+    }
+  }
+});
