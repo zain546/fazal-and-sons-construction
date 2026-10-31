@@ -120,6 +120,12 @@ const projects = [
     "image": "assets/projects/work-6.webp",
     "service": "New construction",
     "description": "A closer look at staircase formwork and structural construction on site."
+  },
+  {
+    "title": "Parkview Apartment",
+    "image": "assets/projects/parkview-apartment.webp",
+    "service": "New construction",
+    "description": "Parkview Apartment, Nazimabad, Karachi."
   }
 ];
 const dialog = $('#project-dialog');
