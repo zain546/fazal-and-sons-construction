@@ -430,3 +430,7 @@ html { scrollbar-gutter: stable; }
 #projects .project-image picture, #project-dialog > picture { display: block; }
 #projects .project-card { opacity: 1; transform: none; }
 #projects .project-image img { min-height: 1px; }
+
+/* Art-directed portrait hero on phones; preload matches the selected source. */
+.hero-picture { display: block; position: absolute; inset: 0; }
+@media (max-width: 680px) { .hero-image { object-position: center center; } }

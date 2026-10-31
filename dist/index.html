@@ -18,7 +18,8 @@
   <meta property="og:title" content="Fazal & Sons Construction — Builders & Contractors in Karachi">
   <meta property="og:description" content="Premier construction company in Karachi. Residential, commercial, and grey structure construction built around your vision.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="assets/hero.webp" imagesrcset="assets/hero-960.webp 960w, assets/hero.webp 1672w" imagesizes="100vw">
+  <link rel="preload" as="image" media="(min-width: 681px)" href="assets/hero.webp" imagesrcset="assets/hero-960.webp 960w, assets/hero.webp 1672w" imagesizes="100vw">
+  <link rel="preload" as="image" type="image/webp" media="(max-width: 680px)" href="assets/hero-mobile.webp" imagesrcset="assets/hero-mobile-640.webp 640w, assets/hero-mobile.webp 1080w" imagesizes="100vw">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="production.css">
   <script type="module" src="app.js"></script>
@@ -54,7 +55,7 @@ gtag('config', 'AW-XXXXXXXXX');</script>
   <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden><a href="#services">Services</a><a href="#projects">Our work</a><a href="#why-us">Why Fazal & Sons</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a><a href="#contact">Discuss your project <svg aria-hidden="true"><use href="#arrow"/></svg></a></nav>
   <main id="main" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-image" src="assets/hero.webp" srcset="assets/hero-960.webp 960w, assets/hero.webp 1672w" sizes="100vw" alt="Contemporary two-storey home with illuminated facade and landscaped entrance at dusk" fetchpriority="high" width="1672" height="1046">
+      <picture class="hero-picture"><source media="(max-width: 680px)" type="image/webp" srcset="assets/hero-mobile-640.webp 640w, assets/hero-mobile.webp 1080w" sizes="100vw" width="1080" height="1350"><source media="(max-width: 680px)" srcset="assets/hero-mobile.jpg" width="1080" height="1350"><img class="hero-image" src="assets/hero.webp" srcset="assets/hero-960.webp 960w, assets/hero.webp 1672w" sizes="100vw" alt="Contemporary two-storey home with illuminated facade and landscaped entrance at dusk" fetchpriority="high" width="1672" height="1046"></picture>
       <div class="hero-shade"></div>
       <div class="hero-content wrap">
         <p class="eyebrow hero-eyebrow"><span></span> KARACHI, PAKISTAN <b>—</b> GENERAL CONTRACTORS &amp; BUILDERS</p>

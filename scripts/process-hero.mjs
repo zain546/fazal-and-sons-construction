@@ -30,3 +30,13 @@ await sharp(input)
   .jpeg({ quality: 86, progressive: true })
   .toFile(outputSocial);
 console.log('Generated:', outputSocial);
+
+// Dedicated portrait photograph for phone screens.
+const mobileInput = path.join(root, 'design', 'hero-options', 'Website_Hero_Mobile_1080x1350.jpg.jpeg');
+for (const width of [640, 1080]) {
+  await sharp(mobileInput).rotate().resize({ width, withoutEnlargement: true })
+    .webp({ quality: 80, effort: 6 })
+    .toFile(path.join(root, 'dist', 'assets', width === 1080 ? 'hero-mobile.webp' : 'hero-mobile-640.webp'));
+}
+await sharp(mobileInput).rotate().jpeg({ quality: 82, progressive: true })
+  .toFile(path.join(root, 'dist', 'assets', 'hero-mobile.jpg'));
