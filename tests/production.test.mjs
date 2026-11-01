@@ -28,6 +28,8 @@ test('optional notes are omitted and oversized input is bounded', () => {
 test('preview deployments remain noindex even when launch indexing is enabled', () => {
   assert.equal(deploymentSettings({ SITE_URL: 'https://example.com', ALLOW_INDEXING: 'true', VERCEL_ENV: 'preview' }).indexing, false);
   assert.equal(deploymentSettings({ SITE_URL: 'https://example.com', ALLOW_INDEXING: 'true', VERCEL_ENV: 'production' }).indexing, true);
+  assert.equal(deploymentSettings({ SITE_URL: 'https://example.com', ALLOW_INDEXING: 'true', CONTEXT: 'deploy-preview' }).indexing, false);
+  assert.equal(deploymentSettings({ SITE_URL: 'https://example.com', ALLOW_INDEXING: 'true', CONTEXT: 'production' }).indexing, true);
   assert.equal(deploymentSettings({}).indexing, false);
   assert.throws(() => deploymentSettings({ SITE_URL: 'https://example.com/path' }));
   assert.throws(() => deploymentSettings({ SITE_URL: 'http://example.com' }));

@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export function deploymentSettings(env) {
-  const raw = env.SITE_URL || (env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${env.VERCEL_PROJECT_PRODUCTION_URL}` : '');
+  const raw = env.SITE_URL || (env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${env.VERCEL_PROJECT_PRODUCTION_URL}` : '') || env.URL || '';
   let origin = '';
   if (raw) {
     const url = new URL(raw);
@@ -12,7 +12,8 @@ export function deploymentSettings(env) {
     }
     origin = url.origin;
   }
-  const indexing = env.ALLOW_INDEXING === 'true' && Boolean(origin) && (!env.VERCEL_ENV || env.VERCEL_ENV === 'production');
+  const isProductionEnv = (!env.VERCEL_ENV || env.VERCEL_ENV === 'production') && (!env.CONTEXT || env.CONTEXT === 'production');
+  const indexing = env.ALLOW_INDEXING === 'true' && Boolean(origin) && isProductionEnv;
   return { origin, indexing };
 }
 

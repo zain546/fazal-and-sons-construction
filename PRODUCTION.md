@@ -1,13 +1,15 @@
 # Production readiness
 
-## Vercel setup
+## Deployment setup (Netlify & Vercel)
 
-Import the repository with its root directory unchanged. `vercel.json` sets the build command and the `build` output directory. It also applies content security, framing, MIME, referrer, permissions, and asset cache headers.
+Import the repository with its root directory unchanged. 
+- For **Netlify**: `netlify.toml` sets the build command (`node scripts/build.mjs`), publish directory (`build`), Node 20 runtime, and production security headers.
+- For **Vercel**: `vercel.json` provides equivalent configuration.
 
-Set these environment variables in Vercel:
+Set these environment variables on your host:
 
-- `SITE_URL`: the final HTTPS origin, for example `https://your-domain.com`. Use the real domain; no path or trailing query. This generates canonical and social-image URLs. If omitted, the build uses `VERCEL_PROJECT_PRODUCTION_URL` when Vercel supplies it.
-- `ALLOW_INDEXING=true`: enable only for the finished public site. Until then, pages carry `noindex,follow` and the sitemap contains no listed pages. Preview deployments always remain noindex, even when this variable is enabled.
+- `SITE_URL`: the final HTTPS origin, for example `https://your-domain.com`. Use the real domain; no path or trailing query. This generates canonical and social-image URLs. If omitted, the build falls back to `VERCEL_PROJECT_PRODUCTION_URL` or Netlify's `URL`.
+- `ALLOW_INDEXING=true`: enable only for the finished public site. Until then, pages carry `noindex,follow` and the sitemap contains no listed pages. Preview and branch deployments automatically remain noindex, even when this variable is enabled.
 
 The source has no fake canonical domain. `build/` is generated and ignored by Git. Deployment metadata changes happen during the build, not in browser JavaScript.
 
